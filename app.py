@@ -14,7 +14,7 @@ spaces -> 4
 """
 @api.representation("application/json")
 def out_json(data, code, headers=None):
-    resp = api.make_response(json.dumps(data), code)
+    resp = Api.make_response(json.dumps(data), code)
     resp.headers.extend(headers or {})
     return resp
 
@@ -43,7 +43,7 @@ def get_data():
 
 @api.blueprint.route("/home/<string:message>",methods=["GET", "POST", "PUT", "HEAD"])
 def home(message):
-    return out_json({"message":message}, 200)
+    return {"message":message}, 200
 
 @api.blueprint.route("/red/", methods=["GET"])
 def redr():
