@@ -11,12 +11,13 @@ api = Api(api_bp)
 """
 Below uses default config;
 spaces -> 4
-"""
+
 @api.representation("application/json")
 def out_json(data, code, headers=None):
     resp = api.make_response(json.dumps(data), code)
     resp.headers.extend(headers or {})
     return resp
+"""
 
 @api.blueprint.before_app_request
 def before():
